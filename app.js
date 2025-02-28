@@ -96,7 +96,7 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/listing', async (req, res) => {
+app.get('/', async (req, res) => {
     let allListing = await Listing.find({});
     res.render('listings/index.ejs', { allListing });
 
