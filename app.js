@@ -102,6 +102,13 @@ app.get('/', async (req, res) => {
 
 });
 
+app.get('/listing', async (req, res) => {
+    let allListing = await Listing.find({});
+    res.render('listings/index.ejs', { allListing });
+
+});
+
+
 
 
 
