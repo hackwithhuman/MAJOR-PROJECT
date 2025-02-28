@@ -1,0 +1,40 @@
+<% layout("/Layouts/boilerplate") %>
+<body>
+    
+   <% if(searchlisting !='null'){ %>
+    <div class="mt-4"><h2>Your Destination Palace </h2></div>    
+    <div class="row row-cols-lg-3 row-cols-md-2 mb-0 row-cols-sm-1 mt-4">
+
+        <% for(slisting of searchlisting) { %>
+            
+            <a href="/listing/<%= slisting._id %>" class="card-link">
+
+                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <img src="<%= slisting.image.url %>" class="card-img-top" alt="listing-image"
+                        style="height: 20rem;">
+
+                    <div class="card-img-overlay"></div>
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= slisting.title %>
+                            </b>
+                            <br>
+                            &#x20B9; <%= slisting.price.toLocaleString('en-IN') %> / Night
+                                <i id="tax-value">&nbsp;+18% GST</i>
+                        </p>
+                    </div>
+                </div>
+
+            </a>
+
+            <% } %>
+        
+
+    </div>
+
+    <% }else{ %>
+<p>No such palace found</p>
+        <% } %>
+</body>

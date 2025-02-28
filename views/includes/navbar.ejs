@@ -1,0 +1,127 @@
+<style>
+  .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 1.5rem;
+    padding: 0 1rem;
+    height: 2.5rem;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+  .btn-search-inp {
+    border-radius: 1.5rem;
+    outline: none !important;
+    padding: 0.5rem 1rem;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  #dropdown {
+    padding: 0.5rem;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: none;
+  }
+  input {
+    outline: none;
+    border: none;
+    flex-grow: 1;
+    padding: 0 0.5rem;
+  }
+  .navbar-nav {
+    align-items: center;
+  }
+  .navres {
+    margin: 0.5rem 0;
+  }
+  @media (max-width: 768px) {
+    .search-container {
+      flex-direction: column;
+      height: auto;
+      border: none;
+    }
+    .btn-search-inp {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    .btn-search {
+      width: 100%;
+    }
+    .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .navres {
+      width: 100%;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listing"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listing">Explore</a>
+      </div>
+
+      <div class="navbar-nav ms-auto navres">
+        <form class="d-flex flex-column w-100" role="search" method="get" action="/search">
+          <div class="search-container form-control me-2 btn-search-inp">
+            <input type="search" id="searchInput" name="q" placeholder="Search destination" aria-label="Search">
+            <select id="dropdown" onchange="updateSearchInput()">
+              <option value="" disabled selected></option>
+              <option value="India">India</option>
+              <option value="United States">United States</option>
+              <option value="Mexico">Mexico</option>
+              <option value="Switzerland">Switzerland</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Fiji">Fiji</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Canada">Canada</option>
+              <option value="Thailand">Thailand</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+              <option value="Greece">Greece</option>
+              <option value="Costa Rica">Costa Rica</option>
+              <option value="Japan">Japan</option>
+              <option value="Maldives">Maldives</option>
+            </select>
+          </div>
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <% if (currUser) { %>
+          <a class="nav-link" href="/listing/new">Add new Listing</a>
+        <% } else { %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script src="/js/searchInput.js"></script>

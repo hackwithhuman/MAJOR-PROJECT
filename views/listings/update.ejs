@@ -1,0 +1,65 @@
+<% layout("/Layouts/boilerplate") %>
+
+<body>
+    <div class="heading-create-new text-center mt-4">
+        <h2>Update your Listing</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <form method="post" action="/listing/<%= listing._id %>?_method=PUT" class="row g-3 needs-validation"
+                novalidate enctype="multipart/form-data">
+
+                <!-- Title -->
+                <div class="col-12 mb-3">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" name="title" value="<%= listing.title %>" class="form-control" required>
+                </div>
+
+                <!-- Description -->
+                <div class="col-12 mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control" required><%= listing.description %></textarea>
+                </div>
+
+                <!-- Original Image -->
+                <div class="col-12 mb-3">
+                    <label class="form-label">Original Image</label>
+                    <br>
+                    <img src="<%= OriginalImage %>" alt="Original Image" class="img-fluid" style="max-width: 100%; height: auto;">
+                </div>
+
+                <!-- Upload New Image -->
+                <div class="col-12 mb-3">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input name="listingImage" type="file" class="form-control">
+                </div>
+
+                <!-- Price -->
+                <div class="col-12 mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" name="price" value="<%= listing.price %>" class="form-control" required>
+                </div>
+
+                <!-- Location -->
+                <div class="col-12 mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="location" value="<%= listing.location %>" class="form-control" required>
+                </div>
+
+                <!-- Country -->
+                <div class="col-12 mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="country" value="<%= listing.country %>" class="form-control" required>
+                </div>
+
+                <!-- Update Button -->
+                <div class="col-12 mb-3">
+                    <button class="btn btn-primary w-100" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
